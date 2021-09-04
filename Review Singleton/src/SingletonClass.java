@@ -1,14 +1,20 @@
 public class SingletonClass {
     private String s = "Hello Phat";
-    private static SingletonClass singletonClass = null;
+    private static final SingletonClass singletonClass = new SingletonClass();
 
-    private SingletonClass(){
-        System.out.println(s);
+    private SingletonClass(){}
+    
+    public void showMessage(){
+        System.out.println(s); 
     }
-
+    
     public static SingletonClass getInstance(){
         if(singletonClass == null){
-            return new SingletonClass();
+            synchronized (SingletonClass.class) {
+                if(singletonClass == null) {
+                    return new SingletonClass();
+                }
+            }
         }
         return singletonClass;
     }
