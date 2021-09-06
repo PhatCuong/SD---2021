@@ -1,16 +1,13 @@
-import Burger.Burger;
-import Burger.BurgerBuilder;
+import Packaging.Bottle;
+import Packaging.Wrapper;
 
 public class Client {
     public static void main(String args[]){
-        BurgerBuilder burger = new BurgerBuilder();
-        BurgerDirector burgerDirector = new BurgerDirector();
+        MealBuilder mealBuilder = new MealBuilder();
 
-        burgerDirector.fullTopping(burger);
-        burgerDirector.cheeseBurger(burger);
+        Meal vegMeal = mealBuilder.prepareVegMeal();
+        vegMeal.showItems();
+        System.out.println("Total Cost: " + vegMeal.getCost());
 
-        //Custom Burger
-        System.out.println("Custom Burger: ");
-        Burger optionalBurger = new BurgerBuilder().addMeat(2).addCheese(3).addKetchup().deliver();
     }
 }
